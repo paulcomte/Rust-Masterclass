@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package packets.packet;
+
+/// --- Packet ---
+///
+/// This packet should be sent by both the server and the client
+///
+/// The packet holds a public_token: String
+///
+/// On the server side, the public_token will decrypt the received message
+/// The client side should store the server's public_token to decrypt the received message
+message Packet {
+    enum PacketType {
+        AUTHENTICATE = 0;
+        PING = 1;
+    }
+
+    PacketType packet_type = 1;
+    bytes value = 2;
+}

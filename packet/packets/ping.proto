@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package packets.ping;
+
+/// --- Ping Packet ---
+///
+/// This packet is used to calculate a ping
+///
+/// It should be used following this way:
+///
+/// Context - Clients want to know its ping with the server
+///
+/// Client retrieves its current time - time1
+/// Client sends the value PING to server
+///
+/// Client wait the PONG value from server
+/// Client retrieve its current - time2
+///
+/// Time elapsed is: time2 - time1
+message Ping {
+    enum PingType {
+        PING = 0;
+        PONG = 1;
+    }
+    PingType ping_type = 1;
+}
